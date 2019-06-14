@@ -1,5 +1,6 @@
 clear;
-##graphics_toolkit('gnuplot');
+clc;
+
 %diskritisasi
 dx=0.025;
 dz=0.1;
@@ -7,7 +8,7 @@ dt=0.00001;
 
 N=1/dx;
 M=1/dz;
-nT=50;
+nT=10;
 
 
 %Parameter dari jurnal
@@ -23,22 +24,27 @@ omega_p = 2 * pi * fp;
 
 fb = 1.2;
 omega_b = 2 * pi * fb;
+
 P = 0;
 sigma = 0.2;
-
-% karangan
-c = 0.2;
-A0=32;
-A1=c*A0;
-alpha=2;
-e=A1/A0;
-c1=2*pi;
-omg_r=fb/fp;
-c2=2*pi*omg_r;
-
-k = 0.3;
-m = 0.5;
 We = 0.5;
+bigK = 0.3;
+
+% dari tesis IDA
+c = 0.2;
+A0 = 32;
+A1 = c * A0;
+alpha = 2;
+e = A1 / A0;
+c1 = 2 * pi;
+omg_r = fb / fp;
+c2 = 2 * pi * omg_r;
+
+m = 1;
+
+
+w = zeros(nT + 1, N + 1)
+%ws = zeros(M+1, N + 1);
 
 for i = 1 : N+1
   x(i) = (i - 1) * dx;
@@ -48,47 +54,46 @@ for j = 1 : nT
   t(j) = (j - 1) * dt;
 end
 
-w = zeros(N+1, nT)
 
 % koefisien R
 delta = 0.2;
 etal = 4 * delta;
 epsi = 0.2;
-z = 0.52;
 
-R = (1 + epsi * z) * (1 - 64 / 10 * etal * ((11/32 * (z-sigma)) - (47/48 * ((z-sigma) ^ 2)) + ((z - sigma)^3) - (1/3 * ((z-sigma) ^4)) ))
-r = x * R
-for i = 2 : N
-  for j = 2 : nT
-      dw = (w(i+1, j) - w(i-1,j)) / 2 * dx;
-      ddw = (w(i+1,j) - 2 * w(i,j) + w(i-1, j)) / dx ^ 2;
-      Dxp = abs(w(i+1,j) - w(i,j)) / dx;
-      Dxn = abs(w(i,j) - w(i-1,j)) / dx;
-      Dx = (1-m) * ((1 + We/R * Dxp) ^ (n-1)) ^ (-1) - (1 + (We/R * Dxn) ^ (n-1)) ^ (-1);
-      something = 1 + (We / R * abs(dw) ^ (n-1));
+for k = 1 : M+1
+  z(k) = (k-1) * dz;
+  R(k) = (1 + epsi * z(k)) * (1 - 64 / 10 * etal * ((11/32 * (z(k)-sigma))...
+    - (47/48 * ((z(k)-sigma) ^ 2))...
+    + ((z(k) - sigma)^3) - (1/3 * ((z(k)-sigma) ^4)) ));
+end
+figure(1);
+plot(z, R);
+
+% metode beda hingga
+for k = 1 : M + 1
+  for j = 1 : nT - 1
+    for i = 2 : N
+      dw = (w(j, i+1) - w(j,i-1)) / 2 * dx;
+      ddw = (w(j, i+1) - 2 * w(j,i) + w(j, i-1)) / dx ^ 2;
+      Dxp = abs(w(j,i+1) - w(j,i)) / dx;
+      Dxn = abs(w(j,i) - w(j,i-1)) / dx;
+      Dx = (1-m) * ((1 + We/R(k) * Dxp) ^ (n-1)) ^ (-1) - (1 + (We/R(k) * Dxn) ^ (n-1)) ^ (-1);
+      notationA = 1 + (We / R(k) * abs(dw) ^ (n-1));
+      
       varA = B1 * (1 + e * cos(c1 * t(j))) + B2 * (cos(c2 * t(j) + P));
-      varB = (1 / (x(i) * R^2)) * (m + (1-m) * something ^ (-1)) * dw;
-      varC = ddw / (R ^ 2) * (m + (1-m) * something ^ (-1));
-      varD = (dw / R ^ 2) * (1-m) * (something ^ (-2)) * 2 * ((1-m) * something);
-      varE = w(i,j) / k * (m + (1-m) / (1 + (We ^ (n-1)) * (abs(w(i,j)) ^ (n-1)) ));
-##      varE = 0;
-##      varD = 0;
-      w(i,j+1) = w(i,j) + dt / alpha * (varA + varB + varC - varD - varE);
-      
-      
-##      (dt / alpha *  ))...
-##        + (1 / (x(i) * R^2)) * (m + (1-m) * something ^ (-1)) * dw...
-##        + ddw / (R ^ 2) * (m + (1-m) * something ^ (-1))...
-##        - (dw / R ^ 2) * (1-m) * (something ^ (-2))...
-##        * Dx * ((1-m))...
-##        - w(i,j) / k * (m + (1-m) / (1 + (We ^ (n-1)) * (abs(w(i,j)) ^ (n-1)) ));
+      varB = (1 / (x(i) * R(k)^2)) * (m + (1-m) * notationA ^ (-1)) * dw;
+      varC = ddw / (R(k) ^ 2) * (m + (1-m) * notationA ^ (-1));
+      varD = (dw / R(k) ^ 2) * (1-m) * (notationA ^ (-2)) * Dx * ((1-m) * notationA);
+      varE = w(j,i) / bigK * (m + (1-m) / (1 + (We ^ (n-1)) * (abs(w(j,i)) ^ (n-1)) ));
+      varD = 0;
+      w(j+1, i) = w(j,i) + dt / alpha * (varA + varB + varC - varD - varE);
    endfor
+   % syarat batas
+   w(j+1, 1) = w(j+1,2);
+   w(j+1, N+1) = 0;
+  endfor
 endfor
 
+figure(2);
+plot(x, w(nT,:))
 
-w(:, 1) = 0;
-w(N+1,:) = 0;
-w(1,:) = w(2,:);
-
-figure(1)
-plot(x, w)
