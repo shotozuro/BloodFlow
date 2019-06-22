@@ -1,4 +1,4 @@
-function [R] = ArterialGeometry(z, delta, sigma)
+function R = ArterialGeometry(z, delta, sigma)
     eta1 = 4*delta;
     epsi = 0.2;
 

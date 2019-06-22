@@ -4,7 +4,7 @@ function [x,t,dx,dt,N,nT,e,c1,c2,alpha,m,L,P] = InitVariables()
     dt = 0.00001;
 
     N = 1/dx;
-    nT = 300000;
+    nT = 600000;
 
     %Parameter dari jurnal
     c = 0.2;
@@ -23,7 +23,7 @@ function [x,t,dx,dt,N,nT,e,c1,c2,alpha,m,L,P] = InitVariables()
     omg_r = fb/fp;
     c2 = 2*pi*omg_r;
 
-    m = 1;
+    m = 0.451;
 
     t  =  0:dt:nT*dt;
     x  =  0:dx:N*dx;
