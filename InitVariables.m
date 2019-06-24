@@ -8,7 +8,6 @@ function [x,t,dx,dt,N,nT,e,c1,c2,alpha,m,L,P] = InitVariables()
 
     %Parameter dari jurnal
     c = 0.2;
-    lo = 1;
     L = 1.8;
     fp = 1.2;
     fb = 1.2;
@@ -23,7 +22,7 @@ function [x,t,dx,dt,N,nT,e,c1,c2,alpha,m,L,P] = InitVariables()
     omg_r = fb/fp;
     c2 = 2*pi*omg_r;
 
-    m = 0.451;
+    m = 0.0616;
 
     t  =  0:dt:nT*dt;
     x  =  0:dx:N*dx;
