@@ -1,15 +1,9 @@
+% VELOCITY
 clear;
 clc;
 
-% default value
-We = 0.5;
-K = 0.3;
-z = 0.52;
-n = 0.7;
-B1 = 4;
-B2 = 4;
-delta = 0.2;
-sigma = 0.2;
+% initiate variable
+[We,K,z,n,B1,B2,delta,sigma] = InitPlottingVar();
 [x,t,~,~,~,nT] = InitVariables();
 
 % VELOCITY
@@ -24,9 +18,9 @@ figure('Name','Grafik Kecepatan terhadap Radius');
 figure(1);
 hold on;
 
-plot(x,w1(nT,:),'-','LineWidth',1,'Color',[1 0 0]);
-plot(x,w2(nT,:),'-','LineWidth',1,'Color',[0 1 0]);
-plot(x,w3(nT,:),'-','LineWidth',1,'Color',[0 0 1]);
+plot(x,w1(nT,:),'-','LineWidth',1,'Color','#0072BD');
+plot(x,w2(nT,:),'--','LineWidth',1,'Color','#77AC30');
+plot(x,w3(nT,:),'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Radius Tak Berdimensi');
 ylabel('Kecepatan Tak Berdimensi')
@@ -41,9 +35,9 @@ legend('B_{2} = 4','B_{2} = 2', 'B_{2} = 0');
 figure('Name','Grafik Kecepatan terhadap Radius');
 hold on;
 
-plot(x,w1(nT,:),'-','LineWidth',1,'Color',[1 0 0]);
-plot(x,w2(nT,:),'-','LineWidth',1,'Color',[0 1 0]);
-plot(x,w3(nT,:),'-','LineWidth',1,'Color',[0 0 1]);
+plot(x,w1(nT,:),'-','LineWidth',1,'Color','#0072BD');
+plot(x,w2(nT,:),'--','LineWidth',1,'Color','#77AC30');
+plot(x,w3(nT,:),'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Radius Tak Berdimensi');
 ylabel('Kecepatan Tak Berdimensi')
@@ -58,9 +52,9 @@ legend('\delta = 0','\delta = 0.2', '\delta = 0.4');
 figure('Name','Grafik Kecepatan terhadap Radius');
 hold on;
 
-plot(x,w1(nT,:),'-','LineWidth',1,'Color',[1 0 0]);
-plot(x,w2(nT,:),'-','LineWidth',1,'Color',[0 1 0]);
-plot(x,w3(nT,:),'-','LineWidth',1,'Color',[0 0 1]);
+plot(x,w1(nT,:),'-','LineWidth',1,'Color','#0072BD');
+plot(x,w2(nT,:),'--','LineWidth',1,'Color','#77AC30');
+plot(x,w3(nT,:),'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Radius Tak Berdimensi');
 ylabel('Kecepatan Tak Berdimensi')
@@ -75,9 +69,9 @@ legend('We = 2.5','We = 1.5', 'We = 0.5');
 figure('Name','Grafik Kecepatan terhadap Radius');
 hold on;
 
-plot(x,w1(nT,:),'-','LineWidth',1,'Color',[1 0 0]);
-plot(x,w2(nT,:),'-','LineWidth',1,'Color',[0 1 0]);
-plot(x,w3(nT,:),'-','LineWidth',1,'Color',[0 0 1]);
+plot(x,w1(nT,:),'-','LineWidth',1,'Color','#0072BD');
+plot(x,w2(nT,:),'--','LineWidth',1,'Color','#77AC30');
+plot(x,w3(nT,:),'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Radius Tak Berdimensi');
 ylabel('Kecepatan Tak Berdimensi')
