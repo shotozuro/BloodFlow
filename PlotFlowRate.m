@@ -2,15 +2,8 @@
 clear;
 clc;
 
-% default value
-We = 0.5;
-K = 0.3;
-z = 0.52;
-n = 0.7;
-B1 = 4;
-B2 = 4;
-delta = 0.2;
-sigma = 0.2;
+% initiate variable
+[We,K,z,n,B1,B2,delta,sigma] = InitPlottingVar();
 [~,t] = InitVariables();
 
 % FIG. 7
@@ -21,9 +14,9 @@ sigma = 0.2;
 
 figure('Name','Grafik Laju Aliran Terhadap Waktu');
 hold on;
-plot(t,fr1,'-','LineWidth',1,'Color',[1 0 0]);
-plot(t,fr2,'-','LineWidth',1,'Color',[0 1 0]);
-plot(t,fr3,'-','LineWidth',1,'Color',[0 0 1]);
+plot(t,fr1,'-','LineWidth',1,'Color','#0072BD');
+plot(t,fr2,'--','LineWidth',1,'Color','#77AC30');
+plot(t,fr3,'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Waktu Tak Berdimensi');
 ylabel('Laju Aliran Tak Berdimensi');
@@ -37,9 +30,9 @@ legend('\delta = 0.0','\delta = 0.2', '\delta = 0.4');
 
 figure('Name','Grafik Laju Aliran Terhadap Waktu');
 hold on;
-plot(t,fr1,'-','LineWidth',1,'Color',[1 0 0]);
-plot(t,fr2,'-','LineWidth',1,'Color',[0 1 0]);
-plot(t,fr3,'-','LineWidth',1,'Color',[0 0 1]);
+plot(t,fr1,'-','LineWidth',1,'Color','#0072BD');
+plot(t,fr2,'--','LineWidth',1,'Color','#77AC30');
+plot(t,fr3,'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Waktu Tak Berdimensi');
 ylabel('Laju Aliran Tak Berdimensi');
@@ -53,13 +46,14 @@ legend('k = 0.1','k = 0.3', 'k = 0.8');
 
 figure('Name','Grafik Laju Aliran Terhadap Waktu');
 hold on;
-plot(t,fr1,'-','LineWidth',1,'Color',[1 0 0]);
-plot(t,fr2,'-','LineWidth',1,'Color',[0 1 0]);
-plot(t,fr3,'-','LineWidth',1,'Color',[0 0 1]);
+plot(t,fr1,'-','LineWidth',1,'Color','#0072BD');
+plot(t,fr2,'--','LineWidth',1,'Color','#77AC30');
+plot(t,fr3,'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Waktu Tak Berdimensi');
 ylabel('Laju Aliran Tak Berdimensi');
 legend('B_{2} = 4','B_{2} = 2', 'B_{2} = 0');
+
 
 % FIG. 10
 % We=[1.5,0.5,0.1]; K=0.8; z=0.52, n=0.7; delta=0.2; B1=4; B2=4;
@@ -69,9 +63,9 @@ legend('B_{2} = 4','B_{2} = 2', 'B_{2} = 0');
 
 figure('Name','Grafik Laju Aliran Terhadap Waktu');
 hold on;
-plot(t,fr1,'-','LineWidth',1,'Color',[1 0 0]);
-plot(t,fr2,'-','LineWidth',1,'Color',[0 1 0]);
-plot(t,fr3,'-','LineWidth',1,'Color',[0 0 1]);
+plot(t,fr1,'-','LineWidth',1,'Color','#0072BD');
+plot(t,fr2,'--','LineWidth',1,'Color','#77AC30');
+plot(t,fr3,'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Waktu Tak Berdimensi');
 ylabel('Laju Aliran Tak Berdimensi');
