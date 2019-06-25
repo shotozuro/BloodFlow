@@ -8,9 +8,9 @@ clc;
 
 % FIG. 11
 % We=[0.1,0.3,0.8]; K=0.3; z=0.52, n=0.7; delta=0.2; B1=4; B2=4;
-[~,~,ss1] = FDMStenoEdit(0.1,K,z,n,delta,sigma,B1,B2);
-[~,~,ss2] = FDMStenoEdit(0.3,K,z,n,delta,sigma,B1,B2);
-[~,~,ss3] = FDMStenoEdit(0.8,K,z,n,delta,sigma,B1,B2);
+[~,~,ss1] = FDMSteno(0.1,K,z,n,delta,sigma,B1,B2);
+[~,~,ss2] = FDMSteno(0.3,K,z,n,delta,sigma,B1,B2);
+[~,~,ss3] = FDMSteno(0.8,K,z,n,delta,sigma,B1,B2);
 
 figure('Name','Grafik Tegangan Geser Terhadap Waktu');
 hold on;
@@ -24,9 +24,9 @@ legend('We = 0.1','We = 0.3', 'We = 0.8');
 
 % FIG. 12
 % We=0.5; K=[0.1,0.3,0.8]; z=0.52, n=0.7; delta=0.2; B1=4; B2=4;
-[~,~,ss1] = FDMStenoEdit(We,0.1,z,n,delta,sigma,B1,B2);
-[~,~,ss2] = FDMStenoEdit(We,0.3,z,n,delta,sigma,B1,B2);
-[~,~,ss3] = FDMStenoEdit(We,0.8,z,n,delta,sigma,B1,B2);
+[~,~,ss1] = FDMSteno(We,0.1,z,n,delta,sigma,B1,B2);
+[~,~,ss2] = FDMSteno(We,0.3,z,n,delta,sigma,B1,B2);
+[~,~,ss3] = FDMSteno(We,0.8,z,n,delta,sigma,B1,B2);
 
 figure('Name','Grafik Tegangan Geser Terhadap Waktu');
 hold on;
