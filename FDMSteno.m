@@ -8,7 +8,6 @@ R = ArterialGeometry(z, delta, sigma);
 
 % Menentukan velocity (w)
 w=zeros(nT+1,N+1);
-dp=zeros(nT+1,1);
 for j=1 : nT
     %FTCS
     varA = B1*(1+e*cos(c1*t(j)));
@@ -33,7 +32,6 @@ for j=1 : nT
     %syarat batas
     w(j+1,1)=w(j+1,2);
     w(j+1,N+1)=0;
-    dp(j) = -(varA);
 end
 
 
@@ -45,7 +43,7 @@ dw2=(w(:,N+1)-w(:,N))./ dx;
 shearStress = ShearStress(We,R,dw2,m,n);
 
 %Resistance to Flow
-% dp = B1.*(1+e.*cos(c1.*t'));
+dp = (B1.*(1+e.*cos(c1.*t'))) .* -1;
 resistance = ResistanceToFlow(L,dp,fRate);
-
+resistance(1) = 0;
 end

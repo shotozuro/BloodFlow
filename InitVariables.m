@@ -7,20 +7,28 @@ function [x,t,dx,dt,N,nT,e,c1,c2,alpha,m,L,P] = InitVariables()
     nT = 600000;
 
     %Parameter dari jurnal
-    c = 0.2;
+    d = 0.2;
+    l0 = 1;
+    c = 0.2; %?
     L = 1.8;
     fp = 1.2;
     fb = 1.2;
+    omega_p = 2*pi*fp;
+    omega_b = 2*pi*fb;
     P = 0;
+    omega = fp;
 
     %Parameter dari jurnal lain yang berkaitan
     A0 = 32;
     A1 = c*A0;
     alpha = 2;
     e = A1/A0;
-    c1 = 2*pi;
-    omg_r = fb/fp;
-    c2 = 2*pi*omg_r;
+%     c1 = 2*pi;
+%     omg_r = fb/fp;
+%     c2 = 2*pi*omg_r;
+%     omg_r = fb/fp;
+    c1 = omega_p / omega;
+    c2 = omega_b / omega;
 
     m = 0.0616;
 

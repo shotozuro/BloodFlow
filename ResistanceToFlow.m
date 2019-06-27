@@ -1,4 +1,3 @@
 function resistance = ResistanceToFlow(L, dp, Q)
-
-resistance = Q;
+    resistance = abs(L .* dp)./Q;
 end

@@ -14,9 +14,9 @@ clc;
 
 figure('Name','Grafik Resistensi untuk Mengalir Terhadap Waktu');
 hold on;
-plot(t,res1,'-','LineWidth',1,'Color','#0072BD');
-plot(t,res2,'--','LineWidth',1,'Color','#77AC30');
-plot(t,res3,'-.','LineWidth',1,'Color','#A2142F');
+plot(t(10000:end),res1(10000:end),'-','LineWidth',1,'Color','#0072BD');
+plot(t(10000:end),res2(10000:end),'--','LineWidth',1,'Color','#77AC30');
+plot(t(10000:end),res3(10000:end),'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Waktu Tak Berdimensi');
 ylabel('Resistensi untuk Mengalir Tak Berdimensi');
