@@ -4,8 +4,7 @@ clc;
 
 % initiate variable
 [We,K,z,n,B1,B2,delta,sigma] = InitPlottingVar();
-[~,tt] = InitVariables();
-t = tt(2:end);
+[~,t] = InitVariables();
 
 % FIG. 7
 % We=0.5; K=0.8; z=0.52, n=0.7; delta=[0,0.2,0.4]; B1=4; B2=4;

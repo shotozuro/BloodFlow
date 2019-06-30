@@ -16,7 +16,7 @@ for j=1 : nT
         dw=(w(j,i+1)-w(j,i-1))/(2*dx);
         Dxp=abs(w(j,i+1)-w(j,i))/dx;
         Dxn=abs(w(j,i)-w(j,i-1))/dx;
-        Dx=(1-m)*((1+((We/R)*Dxp)^(n-1))^(-1)-(1+((We/R)*Dxn)^(n-1))^(-1));
+        Dx=(1-m)*((1+((We/R)*Dxp)^(n-1))^(-1)-(1+((We/R)*Dxn)^(n-1))^(-1))*(1/dx);
 %         Dx=(1-m)*(We/R)*((Dxp-Dxn)/dx);
         ddw=(w(j,i+1)-2*w(j,i)+w(j,i-1))/(dx*dx);
 
@@ -45,5 +45,4 @@ shearStress = ShearStress(We,R,dw2,m,n);
 %Resistance to Flow
 dp = (B1.*(1+e.*cos(c1.*t'))) .* -1;
 resistance = ResistanceToFlow(L,dp,fRate);
-resistance(1) = 0;
 end

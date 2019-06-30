@@ -12,14 +12,14 @@ clc;
 [~,~,ss2] = FDMSteno(0.3,K,z,n,delta,sigma,B1,B2);
 [~,~,ss3] = FDMSteno(0.8,K,z,n,delta,sigma,B1,B2);
 
-figure('Name','Grafik Tegangan Geser Terhadap Waktu');
+figure('Name','Grafik Tegangan Geser pada Dinding Terhadap Waktu');
 hold on;
 plot(t,ss1,'-','LineWidth',1,'Color','#0072BD');
 plot(t,ss2,'--','LineWidth',1,'Color','#77AC30');
 plot(t,ss3,'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Waktu Tak Berdimensi');
-ylabel('Tegangan Geser Tak Berdimensi');
+ylabel('Tegangan Geser pada Dinding Tak Berdimensi');
 legend('We = 0.1','We = 0.3', 'We = 0.8');
 
 % FIG. 12
@@ -28,12 +28,12 @@ legend('We = 0.1','We = 0.3', 'We = 0.8');
 [~,~,ss2] = FDMSteno(We,0.3,z,n,delta,sigma,B1,B2);
 [~,~,ss3] = FDMSteno(We,0.8,z,n,delta,sigma,B1,B2);
 
-figure('Name','Grafik Tegangan Geser Terhadap Waktu');
+figure('Name','Grafik Tegangan Geser pada Dinding Terhadap Waktu');
 hold on;
 plot(t,ss1,'-','LineWidth',1,'Color','#0072BD');
 plot(t,ss2,'--','LineWidth',1,'Color','#77AC30');
 plot(t,ss3,'-.','LineWidth',1,'Color','#A2142F');
 
 xlabel('Waktu Tak Berdimensi');
-ylabel('Tegangan Geser Tak Berdimensi');
+ylabel('Tegangan Geser pada Dinding Tak Berdimensi');
 legend('k = 0.1','k = 0.3', 'k = 0.8');
