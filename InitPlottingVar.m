@@ -3,7 +3,7 @@ function [We,K,z,n,B1,B2,delta,sigma] = InitPlottingVar()
 % Default Plotting Variable
 We = 0.5;
 K = 0.3;
-z = 0.52;
+z = 0.48;
 n = 0.7;
 B1 = 4;
 B2 = 4;
