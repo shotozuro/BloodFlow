@@ -5,7 +5,7 @@ clc;
 [~,~,z,n,B1,~,delta,sigma] = InitPlottingVar();
 [~,t] = InitVariables();
 
-% We=0.1; K=[0.1,0.3,0.8]; z=0.52, n=0.7; delta=0.2; B1=4; B2=0;
+% We=0.1; K=[0.1,0.3,0.8]; z=0.48, n=0.7; delta=0.2; B1=4; B2=0;
 [~,fr1,~,res1] = FDMSteno(0.1,0.1,z,n,delta,sigma,B1,0);
 [~,fr2,~,res2] = FDMSteno(0.1,0.3,z,n,delta,sigma,B1,0);
 [~,fr3,~,res3] = FDMSteno(0.1,0.8,z,n,delta,sigma,B1,0);

@@ -20,7 +20,7 @@ xlabel('Waktu Tak Berdimensi');
 ylabel('Tegangan Geser pada Dinding Tak Berdimensi');
 legend('We = 0.1','We = 0.3', 'We = 0.8');
 
-% We=0.5; K=[0.1,0.3,0.8]; z=0.52, n=0.7; delta=0.2; B1=4; B2=4;
+% We=0.5; K=[0.1,0.3,0.8]; z=0.48, n=0.7; delta=0.2; B1=4; B2=4;
 [~,~,ss1] = FDMSteno(We,0.1,z,n,delta,sigma,B1,B2);
 [~,~,ss2] = FDMSteno(We,0.3,z,n,delta,sigma,B1,B2);
 [~,~,ss3] = FDMSteno(We,0.8,z,n,delta,sigma,B1,B2);
